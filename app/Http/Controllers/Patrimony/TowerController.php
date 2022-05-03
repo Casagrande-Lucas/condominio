@@ -17,6 +17,7 @@ class TowerController extends Controller
 
     public function __construct(Tower $tower)
     {
+        $this->middleware(['role_or_permission:super_admin|administrator']);
         $this->tower = $tower;
     }
 

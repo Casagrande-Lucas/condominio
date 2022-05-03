@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/tower', \App\Http\Controllers\Patrimony\TowerController::class);
+Route::resource('/apartment', \App\Http\Controllers\Patrimony\ApartmentController::class);
+Route::resource('/owner', \App\Http\Controllers\Profile\OwnerController::class);
