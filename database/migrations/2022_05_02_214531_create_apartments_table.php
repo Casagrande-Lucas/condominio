@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
+            $table->string('number');
+            $table->foreignId('tower_id')->constrained('towers')->cascadeOnDelete();
+            $table->boolean('active')->default(true);
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('updated_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

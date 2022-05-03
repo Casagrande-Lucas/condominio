@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('towers', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 55);
+            $table->boolean('active')->default(true);
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('updated_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
