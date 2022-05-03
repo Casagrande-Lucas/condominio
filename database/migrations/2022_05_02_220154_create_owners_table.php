@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 105);
+            $table->string('cpf', 14)->unique('cpf');
+            $table->string('email', 105)->nullable()->unique('email');
+            $table->boolean('active')->default(true);
+            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('updated_by')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
